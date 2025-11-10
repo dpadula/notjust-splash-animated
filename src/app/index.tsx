@@ -6,7 +6,7 @@ export default function Index() {
   const animation = useRef<LottieView>(null);
   useEffect(() => {
     // You can control the ref programmatically, rather than using autoPlay
-    // animation.current?.play();
+    animation.current?.play();
   }, []);
   return (
     <View
@@ -18,7 +18,6 @@ export default function Index() {
       }}
     >
       <LottieView
-        autoPlay
         ref={animation}
         style={{
           width: 200,
