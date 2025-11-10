@@ -25,7 +25,7 @@ export default function Index() {
           backgroundColor: 'transparent',
         }}
         // Find more Lottie files at https://lottiefiles.com/featured
-        source={require('@assets/images/weather-partly-shower.json')}
+        source={require('@assets/lottie/weather-partly-shower.json')}
       />
     </View>
   );
