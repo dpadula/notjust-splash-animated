@@ -1,29 +1,31 @@
 import weatherAnimation from '@assets/lottie/weather-partly-shower.lottie';
 import LottieView from 'lottie-react-native';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { View } from 'react-native';
 
 export default function Index() {
   const animation = useRef<LottieView>(null);
-  useEffect(() => {
-    // You can control the ref programmatically, rather than using autoPlay
-    animation.current?.play();
-  }, []);
+  // useEffect(() => {
+  //   // You can control the ref programmatically, rather than using autoPlay
+  //   animation.current?.play();
+  // }, []);
   return (
     <View
       style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffffff4b',
+        backgroundColor: 'black',
       }}
     >
       <LottieView
         ref={animation}
-        autoPlay
+        // autoPlay
         style={{
-          width: 200,
-          height: 200,
+          width: '80%',
+          height: '40%',
+          maxHeight: 200,
+          maxWidth: 500,
           backgroundColor: 'transparent',
           // Find more Lottie files at https://lottiefiles.com/featured
         }}
