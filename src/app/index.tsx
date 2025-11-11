@@ -1,4 +1,4 @@
-import weatherAnimation from '@assets/lottie/weather-partly-shower.json';
+import weatherAnimation from '@assets/lottie/weather-partly-shower.lottie';
 import LottieView from 'lottie-react-native';
 import { useEffect, useRef } from 'react';
 import { View } from 'react-native';
@@ -20,6 +20,7 @@ export default function Index() {
     >
       <LottieView
         ref={animation}
+        autoPlay
         style={{
           width: 200,
           height: 200,
