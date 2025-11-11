@@ -1,3 +1,4 @@
+import weatherAnimation from '@assets/lottie/weather-partly-shower.json';
 import LottieView from 'lottie-react-native';
 import { useEffect, useRef } from 'react';
 import { View } from 'react-native';
@@ -23,9 +24,9 @@ export default function Index() {
           width: 200,
           height: 200,
           backgroundColor: 'transparent',
+          // Find more Lottie files at https://lottiefiles.com/featured
         }}
-        // Find more Lottie files at https://lottiefiles.com/featured
-        source={require('@assets/lottie/weather-partly-shower.json')}
+        source={weatherAnimation}
       />
     </View>
   );
