@@ -36,7 +36,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (dataLoaded) {
       // Oculta el splash screen
-      // SplashScreen.hideAsync();
+      SplashScreen.hideAsync();
       setAppReady(true);
     }
   }, [dataLoaded]); // Se ejecuta cada vez que dataLoaded cambia
