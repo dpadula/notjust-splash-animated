@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import AnimatedSplashScreen from './components/AnimatedSplashScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -8,6 +9,8 @@ export default function RootLayout() {
   const sleep = (delay: number) =>
     new Promise((resolve) => setTimeout(resolve, delay));
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [appReady, setAppReady] = useState(false);
+  const [splashAnimationFinished, setSplashAnimationFinished] = useState(false);
 
   const loadData = async () => {
     await sleep(2000);
@@ -32,16 +35,26 @@ export default function RootLayout() {
   // 3. Usar otro useEffect para ocultar el splash screen cuando dataLoaded cambie a true
   useEffect(() => {
     if (dataLoaded) {
-      console.log('🚀 ~ RootLayout ~ HIDE SPLASH SCREEN:');
       // Oculta el splash screen
-      SplashScreen.hideAsync();
+      // SplashScreen.hideAsync();
+      setAppReady(true);
     }
   }, [dataLoaded]); // Se ejecuta cada vez que dataLoaded cambia
 
-  // Mientras los datos se cargan, puedes mostrar un indicador o null
-  if (!dataLoaded) {
+  // 4. Mostrar el splash screen mientras appReady sea false y splashAnimationFinished sea false
+  const showAnimatedSplash = !appReady || !splashAnimationFinished;
+  if (showAnimatedSplash) {
     // No necesitamos mostrar nada, solo esperamos a que el useEffect termine
-    return null;
+    // return null;
+    return (
+      <AnimatedSplashScreen
+        onAnimationFinish={(isCancelled) => {
+          if (!isCancelled) {
+            setSplashAnimationFinished(true);
+          }
+        }}
+      />
+    );
   }
 
   return (
